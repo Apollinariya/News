@@ -2,12 +2,12 @@
 export const SIGN_IN_RECEIVE = 'SIGN_IN_RECEIVE'
 
 const signInRequest = googleToken => ({
-  type: 'SIGN_IN_REQUEST',
+  type: SIGN_IN_REQUEST,
   googleToken
 })
 
 const signInReceive = user => ({
-  type: 'SIGN_IN_RECEIVE',
+  type: SIGN_IN_RECEIVE,
   user
 })
 

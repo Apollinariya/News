@@ -1,17 +1,11 @@
-﻿using News.BusinessLayer.Services;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
+using News.BusinessLayer.Services;
+using News.DataLayer.Models;
 using News.Web.DTO;
 using News.Web.Forms;
-using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.IdentityModel.Tokens;
-using Newtonsoft.Json;
-using System;
-using System.IdentityModel.Tokens.Jwt;
-using System.Net.Http;
-using System.Security.Claims;
-using System.Text;
+using System.Linq;
 using System.Threading.Tasks;
-using News.DataLayer.Models;
 
 namespace News.Web.Controllers
 {
@@ -26,10 +20,11 @@ namespace News.Web.Controllers
       _newsService = newsService;
     }
 
+    [AllowAnonymous]
     [HttpGet("[action]")]
     public async Task<IActionResult> GetAllNews()
     {
-      var news = await _newsService.GetAllNews();
+      var news = (await _newsService.GetAllNews()).Select(u => new NewsDto(u));
 
       return Ok(news);
     }

@@ -20,7 +20,7 @@ namespace News.BusinessLayer.Services
 
     public async Task<IEnumerable<New>> GetAllNews()
     {
-      return await _context.News.ToArrayAsync();
+      return await _context.News.Include(u => u.User).ToArrayAsync();
     }
 
     public async Task<int> AddNews(New news)

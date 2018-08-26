@@ -7,6 +7,13 @@ const userLoggedIn = createSelector(
   user => user.token !== null
 )
 
+const isOwner = createSelector(
+  getUser,
+  (_, userId) => userId,
+  (user, userId) => user.id === userId
+)
+
 export default {
-  userLoggedIn
+  userLoggedIn,
+  isOwner
 }
