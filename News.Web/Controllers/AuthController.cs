@@ -66,7 +66,6 @@ namespace News.Web.Controllers
       }
       catch (Exception e)
       {
-
         throw;
       }
     }

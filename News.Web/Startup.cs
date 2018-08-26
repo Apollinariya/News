@@ -19,6 +19,7 @@ namespace News.Web
       var connection = @"Server=(localdb)\mssqllocaldb;Database=News;Trusted_Connection=True;ConnectRetryCount=0";
       services.AddDbContext<NewsContext>(options => options.UseSqlServer(connection));
       services.AddScoped<UserService>();
+      services.AddScoped<NewsService>();
 
       var key = Encoding.ASCII.GetBytes("SymmetricSecurityKey");
       services.AddAuthentication(x =>
